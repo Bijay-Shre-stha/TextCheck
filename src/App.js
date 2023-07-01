@@ -1,24 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import About from "./Components/About";
+import Navbar from "./Components/Navbar";
+import TextForm from "./Components/TextForm";
+import Alert from "./Components/Alert";
 
 function App() {
+  const [mode, darkMode] = useState('light');
+  const toggleMode = () => {
+    if (mode === 'light') {
+      darkMode('dark');
+      document.body.style.backgroundColor = ' #031637';
+      showAlert("Dark mode has been enabled", "success");
+
+    }
+    else {
+      darkMode('light');
+      document.body.style.backgroundColor = 'white';
+      showAlert("Light mode has been enabled", "success");
+    }
+  }
+  const [alert, setAlert] = useState(null);
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
+
+  // const [bgColor, setBgColor] = useState('white');
+  // const blueChanger = () => {
+  //   if (bgColor === 'white') {
+  //     setBgColor('#C9DCF7');
+  //     document.body.style.backgroundColor = '#C9DCF7';
+  //   }
+  //   else {
+  //     setBgColor('white');
+  //     document.body.style.backgroundColor = '#C9DCF7';
+  //   }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar title="TextCheck" about="About us" mode={mode} toggleMode={toggleMode} />
+      <Alert alert={alert}/>
+      <div className="container m-3"> 
+      <TextForm showAlert={showAlert} heading="Enter the text" mode={mode}/>  
+      <About />   
+      </div>
+    </>
   );
 }
 
