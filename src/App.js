@@ -31,17 +31,6 @@ function App() {
     }, 1500);
   }
 
-  // const [bgColor, setBgColor] = useState('white');
-  // const blueChanger = () => {
-  //   if (bgColor === 'white') {
-  //     setBgColor('#C9DCF7');
-  //     document.body.style.backgroundColor = '#C9DCF7';
-  //   }
-  //   else {
-  //     setBgColor('white');
-  //     document.body.style.backgroundColor = '#C9DCF7';
-  //   }
-  
   return (
     <>
       <Navbar title="TextCheck" about="About us" mode={mode} toggleMode={toggleMode} />
