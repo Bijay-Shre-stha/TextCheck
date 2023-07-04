@@ -28,7 +28,7 @@ export default function TextForm(props) {
         props.showAlert("Extra space removed", "success");
     }
 
-
+   
     
 
     const handleClear = () => {
@@ -37,7 +37,20 @@ export default function TextForm(props) {
         setText(newText);
         props.showAlert("Text cleared", "success");
     }
-
+    const handleArrangement = () => {
+        console.log("Arrangement was clicked" + text);
+        let newText = text.split(/[.] /).map(sentence => {
+            return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        }).join(". ");
+        setText(newText);
+        props.showAlert("Text arranged", "success");
+    }
+    const handleSpacing = () => {
+        let newText = text.replace(/[.]/g, ". ");
+    setText(newText);
+    props.showAlert("Text arranged", "success");
+    }
+    
 
     const handleOnChange = (event) => {
         console.log("On change");
@@ -61,12 +74,15 @@ export default function TextForm(props) {
             <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>{props.heading} </h1>
                 <div className="mb-3" >
-                    <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#031637' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}id="myBox" rows="8"></textarea>
+                    <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#031637' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}
+                    id="myBox" rows="8" spellCheck="true"
+                    ></textarea>
                 </div>
                 <button className="btn btn-primary m-3" onClick={handleUpCase}>Convert to upper case</button>
                 <button className="btn btn-primary m-3" onClick={handleLowerCase}>Convert to Lower case</button>
                 <button className="btn btn-primary m-3" onClick={handleCopyText}>Copy text</button>
-                {/* <button className="btn btn-primary m-3" onClick={handleArrangement}>Arrangement</button> */}
+                <button className="btn btn-primary m-3" onClick={handleSpacing}>Spacing</button>
+                <button className="btn btn-primary m-3" onClick={handleArrangement}>Arrangement</button> 
                 <button className="btn btn-primary m-3" onClick={handleExtraSpace}>Remove extra space</button>
                 <button className="btn btn-danger m-3" onClick={handleClear} >Clear text</button>
 
