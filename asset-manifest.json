@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TextCheck/static/css/main.073c9b0a.css",
+    "main.js": "/TextCheck/static/js/main.ddea8123.js",
+    "static/js/787.b8f25170.chunk.js": "/TextCheck/static/js/787.b8f25170.chunk.js",
+    "index.html": "/TextCheck/index.html",
+    "main.073c9b0a.css.map": "/TextCheck/static/css/main.073c9b0a.css.map",
+    "main.ddea8123.js.map": "/TextCheck/static/js/main.ddea8123.js.map",
+    "787.b8f25170.chunk.js.map": "/TextCheck/static/js/787.b8f25170.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.ddea8123.js"
+  ]
+}
