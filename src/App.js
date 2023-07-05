@@ -41,7 +41,7 @@ function App() {
       <Navbar title="TextCheck" about="About us" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
       <div className="container m-3">
-         {/* <Routes>
+        {/* <Routes>
         <Route exact path="/about" element={<About />} /> */}
           {/* <Route exact path="/" element={ */}
           

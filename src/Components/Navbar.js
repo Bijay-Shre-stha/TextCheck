@@ -16,7 +16,7 @@ export default function Navbar(props) {
                 aria-expanded="false"
                 aria-label="Toggle navigation"
                 onClick={props.toggleMode}
-                
+
             >
                 <span className="navbar-toggler-icon"></span>
             </button>
