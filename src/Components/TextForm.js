@@ -17,11 +17,12 @@ export default function TextForm(props) {
     };
 
     const handleCopyText = () => {
-        console.log("Copy was clicked" + text);
-        let newText = document.getElementById("myBox");
-        newText.select();
-        navigator.clipboard.writeText(newText.value);
-        document.getSelection().removeAllRanges();
+        // console.log("Copy was clicked" + text);
+        // let newText = document.getElementById("myBox");
+        // newText.select();
+        // navigator.clipboard.writeText(newText.value);
+        navigator.clipboard.writeText(text);
+        // document.getSelection().removeAllRanges();
         props.showAlert("Copied to clipboard", "success");
     };
 
@@ -60,14 +61,14 @@ export default function TextForm(props) {
         setText(event.target.value);
     };
 
-    const count = () => {
-        if (text.length > 0) {
-            return text.trim().split(/[ ]+/).length;
-        }
-        else {
-            return 0;
-        }
-    }
+    // const count = () => {
+    //     if (text.length > 0) {
+    //         return text.trim().split(/[ ]+/).length;
+    //     }
+    //     else {
+    //         return 0;
+    //     }
+    // }
     const [text, setText] = useState("");
     return (
         <>
@@ -88,9 +89,9 @@ export default function TextForm(props) {
             </div>
             <div className="contain m-3 " style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>Your text summary</h1>
-                <p>{count()} words and {text.length} characters
+                <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters
                 </p>
-                <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to read</p>
+                <p>{0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Minutes to read</p>
                 <p>{0.008 * 60 * text.split(" ").filter((element)=>{return element.length!==0}).length} Seconds to read</p>
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : " Nothing to Preview~! "}</p>

@@ -22,7 +22,7 @@ export default function Navbar(props) {
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
+                    <li className="nav-item ">
                         <Link className="nav-link" to="/">
                             Home <span className="sr-only"></span>
                         </Link>
