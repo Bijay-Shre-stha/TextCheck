@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
+    
     const handleUpCase = () => {
         console.log("Uppercase was clicked" + text);
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("Converted to uppercase", "success");
     };
+
     const handleLowerCase = () => {
         console.log("Lowercase was clicked" + text);
         let newText = text.toLowerCase();
         setText(newText);
         props.showAlert("Converted to lowercase", "success");
     };
+
     const handleCopyText = () => {
         console.log("Copy was clicked" + text);
         let newText = document.getElementById("myBox");
         newText.select();
         navigator.clipboard.writeText(newText.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Copied to clipboard", "success");
     };
 
@@ -28,15 +32,13 @@ export default function TextForm(props) {
         props.showAlert("Extra space removed", "success");
     }
 
-
-
-
     const handleClear = () => {
         console.log("Clear was clicked" + text);
         let newText = "";
         setText(newText);
         props.showAlert("Text cleared", "success");
     }
+
     const handleArrangement = () => {
         console.log("Arrangement was clicked" + text);
         let newText = text.split(/[.] /).map(sentence => {
@@ -45,18 +47,19 @@ export default function TextForm(props) {
         setText(newText);
         props.showAlert("Text arranged", "success");
     }
+
     const handleSpacing = () => {
         let newText = text.replace(/[.]/g, ". ");
         setText(newText);
         props.showAlert("Text arranged", "success");
     }
 
-
     const handleOnChange = (event) => {
         console.log("On change");
         //console.log(event.target.value)
         setText(event.target.value);
     };
+
     const count = () => {
         if (text.length > 0) {
             return text.trim().split(/[ ]+/).length;
@@ -65,7 +68,6 @@ export default function TextForm(props) {
             return 0;
         }
     }
-
 
     const [text, setText] = useState("");
 
@@ -78,23 +80,23 @@ export default function TextForm(props) {
                         id="myBox" rows="8" spellCheck="true"
                     ></textarea>
                 </div>
-                <button className="btn btn-primary m-3" onClick={handleUpCase}>Convert to upper case</button>
-                <button className="btn btn-primary m-3" onClick={handleLowerCase}>Convert to Lower case</button>
-                <button className="btn btn-primary m-3" onClick={handleCopyText}>Copy text</button>
-                <button className="btn btn-primary m-3" onClick={handleSpacing}>Spacing</button>
-                <button className="btn btn-primary m-3" onClick={handleArrangement}>Arrangement</button>
-                <button className="btn btn-primary m-3" onClick={handleExtraSpace}>Remove extra space</button>
-                <button className="btn btn-danger m-3" onClick={handleClear} >Clear text</button>
+                <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleUpCase}>Convert to Upper case</button>
+                <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleLowerCase}>Convert to Lower case</button>
+                <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleCopyText}>Copy text</button>
+                <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleSpacing}>Spacing</button>
+                <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleArrangement}>Arrangement</button>
+                <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleExtraSpace}>Remove extra space</button>
+                <button disabled={text.length===0} className="btn btn-danger m-3" onClick={handleClear} >Clear text</button>
 
             </div>
             <div className="contain m-3 " style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>Your text summary</h1>
                 <p>{count()} words and {text.length} characters
                 </p>
-                <p>{0.008 * text.split(" ").length} Minutes to read</p>
-                <p>{0.008 * 60 * text.split(" ").length} Seconds to read</p>
+                <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes to read</p>
+                <p>{0.008 * 60 * text.split(" ").filter((element)=>{return element.length!==0}).length} Seconds to read</p>
                 <h2>Preview</h2>
-                <p>{text.length > 0 ? text : "Enter the text to preview "}</p>
+                <p>{text.length > 0 ? text : " Nothing to Preview~! "}</p>
             </div>
         </>
     );
