@@ -68,9 +68,7 @@ export default function TextForm(props) {
             return 0;
         }
     }
-
     const [text, setText] = useState("");
-
     return (
         <>
             <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
@@ -87,7 +85,6 @@ export default function TextForm(props) {
                 <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleArrangement}>Arrangement</button>
                 <button disabled={text.length===0} className="btn btn-primary m-3" onClick={handleExtraSpace}>Remove extra space</button>
                 <button disabled={text.length===0} className="btn btn-danger m-3" onClick={handleClear} >Clear text</button>
-
             </div>
             <div className="contain m-3 " style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>Your text summary</h1>

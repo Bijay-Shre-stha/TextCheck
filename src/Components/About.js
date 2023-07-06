@@ -10,11 +10,9 @@ export default function About(props) {
         color: props.mode==='dark'?'white':'#031637',
         backgroundColor: props.mode==='dark'?'#031637':'white'
     }
-
     return (
         <div className="container m-5" style={myStyle}>
             <h1 className="m-3">About Us</h1>
-
             <div className="accordion" id="accordionExample" >
                 <div className="accordion-item">
                     <h2 className="accordion-header" id="headingOne">
