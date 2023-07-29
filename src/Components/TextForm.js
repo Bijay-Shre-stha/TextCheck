@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-export default function TextForm(props) {
-    
+const TextForm=(props)=>{    
     const handleUpCase = () => {
         console.log("Uppercase was clicked" + text);
         let newText = text.toUpperCase();
@@ -56,20 +55,12 @@ export default function TextForm(props) {
         setText(event.target.value);
     };
 
-    // const count = () => {
-    //     if (text.length > 0) {
-    //         return text.trim().split(/[ ]+/).length;
-    //     }
-    //     else {
-    //         return 0;
-    //     }
-    // }
     const [text, setText] = useState("");
     return (
-        <>
-            <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
+        <div className="d-grid">
+        <div className="container " style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
                 <h1>{props.heading} </h1>
-                <div className="mb-3" >
+                <div className="mb-2" >
                     <textarea className="form-control" value={text} onChange={handleOnChange} style={{ backgroundColor: props.mode === 'dark' ? '#031637' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}
                         id="myBox" rows="8" spellCheck="true"
                     ></textarea>
@@ -91,6 +82,7 @@ export default function TextForm(props) {
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : " Nothing to Preview~! "}</p>
             </div>
-        </>
+            </div>
     );
 }
+export default TextForm
